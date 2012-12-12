@@ -22,8 +22,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Glassfish / JAX-WS 2.X RI / Metro 1.X / JWSDP 2.0" level="project" />
     <orderEntry type="library" name="SVM" level="project" />
+    <orderEntry type="library" name="axis" level="project" />
   </component>
 </module>
 
