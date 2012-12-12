@@ -1,12 +1,11 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="Service:jar">
+  <artifact type="jar" build-on-make="true" name="ServiceClient:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/</output-path>
-    <root id="archive" name="SvmService.jar">
+    <root id="archive" name="ServiceClient.jar">
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/Service/src/META-INF/MANIFEST.MF" />
-        <element id="file-copy" path="$PROJECT_DIR$/Service/src/META-INF/services.xml" />
+        <element id="file-copy" path="$PROJECT_DIR$/ServiceClient/src/META-INF/MANIFEST.MF" />
       </element>
-      <element id="module-output" name="Service" />
+      <element id="module-output" name="ServiceClient" />
       <element id="extracted-dir" path="$PROJECT_DIR$/Service/lib/axis.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/Service/lib/axis2-adb-1.6.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/Service/lib/commons-discovery-0.2.jar" path-in-jar="/" />
@@ -15,9 +14,6 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/Service/lib/log4j-1.2.8.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/Service/lib/saaj.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/Service/lib/wsdl4j-1.5.1.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/Service/lib/svm.domain.abstraction.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/Service/lib/svm.domain.implementation.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/Service/lib/svm.exceptions.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

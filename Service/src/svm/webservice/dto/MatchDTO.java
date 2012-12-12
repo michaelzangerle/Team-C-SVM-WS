@@ -4,11 +4,11 @@
  */
 package svm.webservice.dto;
 
-import java.util.Date;
 import svm.domain.abstraction.modelInterfaces.IMatch;
 
+import java.util.Date;
+
 /**
- *
  * @author mike
  */
 public class MatchDTO extends DTO<IMatch> {
@@ -102,17 +102,17 @@ public class MatchDTO extends DTO<IMatch> {
 
     private TeamDTO getAwayTeamTemp(IMatch match) {
         if (!match.getAwayExternal().isNull()) {
-            return new ExternalTeamDTO(match.getAwayExternal());
+            return null;
         } else {
-            return new InternalTeamDTO(match.getAwayInternal());
+            return new TeamDTO(match.getAwayInternal());
         }
     }
 
     private TeamDTO getHomeTeamTemp(IMatch match) {
         if (!match.getHomeExternal().isNull()) {
-            return new ExternalTeamDTO(match.getHomeExternal());
+            return null;
         } else {
-            return new InternalTeamDTO(match.getHomeInternal());
+            return new TeamDTO(match.getHomeInternal());
         }
     }
 

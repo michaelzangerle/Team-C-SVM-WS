@@ -4,23 +4,34 @@
  */
 package svm.webservice.dto;
 
-import svm.domain.abstraction.modelInterfaces.IModel;
+import svm.domain.abstraction.modelInterfaces.ITeam;
 
 /**
- *
  * @author Administrator
  */
-public abstract class TeamDTO extends DTO<IModel> {
+public class TeamDTO extends DTO<ITeam> {
 
-    public TeamDTO(IModel m) {
+    private String name;
+    private MemberDTO contactPerson;
+
+    public MemberDTO getContactPerson() {
+        return contactPerson;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public TeamDTO(ITeam m) {
         super(m);
         doUpdate(m);
     }
 
-    public abstract String getName();
-
     @Override
-    protected abstract void doUpdate(IModel m);
+    protected void doUpdate(ITeam m) {
+        this.name = m.getName();
+        this.contactPerson = new MemberDTO(m.getContactPerson());
+    }
 
     @Override
     public String toString() {

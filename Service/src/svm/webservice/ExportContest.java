@@ -7,7 +7,6 @@ import svm.domain.abstraction.modelInterfaces.IMatch;
 import svm.domain.abstraction.modelInterfaces.ITeam;
 import svm.persistence.abstraction.exceptions.NoSessionFoundException;
 import svm.webservice.dto.ContestDTO;
-import svm.webservice.dto.InternalTeamDTO;
 import svm.webservice.dto.MatchDTO;
 import svm.webservice.dto.TeamDTO;
 
@@ -40,7 +39,7 @@ public class ExportContest {
         try {
             try {
                 for (ITeam team : DomainFacade.getTeamModelDAO().getAll(sessionId)) {
-                    result.add(new InternalTeamDTO(team));
+                    result.add(new TeamDTO(team));
                 }
             } finally {
                 DomainFacade.closeSession(sessionId);
@@ -74,11 +73,11 @@ public class ExportContest {
     }
 
     @WebMethod
-    public List<ContestDTO> getListOfContestsByTeam(TeamDTO team) {
+    public List<ContestDTO> getListOfContestsByTeam(Integer team) {
         List<ContestDTO> result = new LinkedList<ContestDTO>();
         this.sessionId = DomainFacade.generateSessionId();
         try {
-            ITeam t = DomainFacade.getTeamModelDAO().getByUID(sessionId, team.getUID());
+            ITeam t = DomainFacade.getTeamModelDAO().getByUID(sessionId, team);
             try {
                 for (IContestHasTeam c : t.getAllContests()) {
                     result.add(new ContestDTO(c.getContest()));
@@ -93,11 +92,11 @@ public class ExportContest {
     }
 
     @WebMethod
-    public List<MatchDTO> getListOfMatches(ContestDTO contest) {
+    public List<MatchDTO> getListOfMatches(Integer contest) {
         List<MatchDTO> result = new LinkedList<MatchDTO>();
         this.sessionId = DomainFacade.generateSessionId();
         try {
-            IContest t = DomainFacade.getContestModelDAO().getByUID(sessionId, contest.getUID());
+            IContest t = DomainFacade.getContestModelDAO().getByUID(sessionId, contest);
             try {
                 for (IMatch match : t.getMatches()) {
                     result.add(new MatchDTO(match));
