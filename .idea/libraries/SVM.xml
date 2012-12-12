@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="SVM">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Service/lib/svm.domain.abstraction.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Service/lib/svm.domain.implementation.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Service/lib/svm.exceptions.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,18 @@
+<service name="HelloWorldService" scope="application">
+    <Description>Svm Description</Description>
+
+    <operation name="sayHelloWorldFrom">
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+
+    <operation name="getListOfContestsByDate">
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+
+    <operation name="getListOfTeams">
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+
+    <parameter name="ServiceClass">svm.webservice.ExportContest</parameter>
+
+</service>
