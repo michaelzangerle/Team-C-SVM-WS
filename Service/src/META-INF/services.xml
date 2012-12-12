@@ -13,6 +13,14 @@
         <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
     </operation>
 
+    <operation name="getListOfContestsByTeam">
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+
+    <operation name="getListOfMatches">
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+
     <parameter name="ServiceClass">svm.webservice.ExportContest</parameter>
 
 </service>

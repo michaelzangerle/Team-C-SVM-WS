@@ -2,10 +2,13 @@ package svm.webservice;
 
 import svm.domain.abstraction.DomainFacade;
 import svm.domain.abstraction.modelInterfaces.IContest;
+import svm.domain.abstraction.modelInterfaces.IContestHasTeam;
+import svm.domain.abstraction.modelInterfaces.IMatch;
 import svm.domain.abstraction.modelInterfaces.ITeam;
 import svm.persistence.abstraction.exceptions.NoSessionFoundException;
 import svm.webservice.dto.ContestDTO;
 import svm.webservice.dto.InternalTeamDTO;
+import svm.webservice.dto.MatchDTO;
 import svm.webservice.dto.TeamDTO;
 
 import javax.jws.WebMethod;
@@ -60,6 +63,44 @@ public class ExportContest {
                     if (fmt.format(contest.getStart()).equals(searchDate)) {
                         result.add(new ContestDTO(contest));
                     }
+                }
+            } finally {
+                DomainFacade.closeSession(sessionId);
+            }
+        } catch (NoSessionFoundException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @WebMethod
+    public List<ContestDTO> getListOfContestsByTeam(TeamDTO team) {
+        List<ContestDTO> result = new LinkedList<ContestDTO>();
+        this.sessionId = DomainFacade.generateSessionId();
+        try {
+            ITeam t = DomainFacade.getTeamModelDAO().getByUID(sessionId, team.getUID());
+            try {
+                for (IContestHasTeam c : t.getAllContests()) {
+                    result.add(new ContestDTO(c.getContest()));
+                }
+            } finally {
+                DomainFacade.closeSession(sessionId);
+            }
+        } catch (NoSessionFoundException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @WebMethod
+    public List<MatchDTO> getListOfMatches(ContestDTO contest) {
+        List<MatchDTO> result = new LinkedList<MatchDTO>();
+        this.sessionId = DomainFacade.generateSessionId();
+        try {
+            IContest t = DomainFacade.getContestModelDAO().getByUID(sessionId, contest.getUID());
+            try {
+                for (IMatch match : t.getMatches()) {
+                    result.add(new MatchDTO(match));
                 }
             } finally {
                 DomainFacade.closeSession(sessionId);
